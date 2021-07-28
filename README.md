@@ -7,4 +7,4 @@ Guess How Many Smarties in the Jar :candy: - no maths required, it's semi-random
 
 Fortune Teller :crystal_ball: - a sentient fortune cookie gives you wise words that may or may not make sense
 
-Pop the Balloons :dart: - throw a dart at some balloons and something may happen
+Pop the Balloon :dart: - throw a dart at some balloons and something may happen
