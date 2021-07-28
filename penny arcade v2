@@ -1,0 +1,318 @@
+import tkinter as tk
+from tkinter import ttk
+import random
+from random import randrange
+from PIL import ImageTk,Image
+from tkinter import messagebox
+import pandas as pd
+
+#setting up the window's size, title, favicon
+arcade = tk.Tk()
+arcade.title("Penny Arcade")
+arcade.geometry("700x750")
+arcade.configure(background="pink")
+arcade.resizable(False, False)
+arcade.iconbitmap(r"C:\Users\XXX\Documents\codin\atom files\penny.ico")
+
+#making notebook to hold several tabs within the window for different 'games'
+book = ttk.Notebook(arcade)
+book.grid()
+
+#--------LOVE TESTER TAB--------
+luvframe = tk.Frame(book, width=700, height=750, bg="pink")
+luvframe.grid()
+book.add(luvframe, text="Love Tester")
+
+#love tester title
+test_lbl = tk.Label(master=luvframe,text="Love Tester", bg="pink", fg="#FF1493", height=1)
+test_lbl.grid(padx=120)
+test_lbl.configure(font=("Choko", 65))
+
+#love tester subtitle
+text = tk.Label(wraplen=420, bg="pink", fg="#FF1493", master=luvframe, text="Press the button and the spirit that haunts this program will tell you the horrifying truth of your eligibility!")
+text.grid(pady=5)
+text.configure(font=("Choko", 12))
+
+#making the frames for each outcome in the love tester
+frame1 = tk.Frame(master=luvframe, width=400, height=60, bg="#ffd9df", highlightbackground="#FF1493", highlightthickness=2)
+frame1.grid(pady=3)
+frame1.config()
+frame1.grid_propagate(0)
+frame2 = tk.Frame(master=luvframe, width=400, height=60, bg="#ffd9df", highlightbackground="#FF1493", highlightthickness=2)
+frame2.grid(pady=3)
+frame2.config()
+frame2.grid_propagate(0)
+frame3 = tk.Frame(master=luvframe, width=400, height=60, bg="#ffd9df", highlightbackground="#FF1493", highlightthickness=2)
+frame3.grid(pady=4)
+frame3.config()
+frame3.grid_propagate(0)
+frame4 = tk.Frame(master=luvframe, width=400, height=60, bg="#ffd9df", highlightbackground="#FF1493", highlightthickness=2)
+frame4.grid(pady=3)
+frame4.config()
+frame4.grid_propagate(0)
+frame5 = tk.Frame(master=luvframe, width=400, height=60, bg="#ffd9df", highlightbackground="#FF1493", highlightthickness=2)
+frame5.grid(pady=3)
+frame5.config()
+frame5.grid_propagate(0)
+frame6 = tk.Frame(master=luvframe, width=400, height=60, bg="#ffd9df", highlightbackground="#FF1493", highlightthickness=2)
+frame6.grid(pady=3)
+frame6.config()
+frame6.grid_propagate(0)
+
+#making the text labels for each outcome in the love tester
+label1= tk.Label(master=frame1, text="CASANOVA", bg="#ffd9df", fg="#FF1493")
+label1.grid(padx=105, pady=5)
+label1.config(font=("Bubblegum Sans", 28))
+label2= tk.Label(master=frame2, text="HOT TAMALE", bg="#ffd9df", fg="#FF1493")
+label2.grid(padx=95, pady=5)
+label2.config(font=("Bubblegum Sans", 28))
+label3= tk.Label(master=frame3, text="HUBBA-HUBBA", bg="#ffd9df", fg="#FF1493")
+label3.grid(padx=76, pady=5)
+label3.config(font=("Bubblegum Sans", 28))
+label4= tk.Label(master=frame4, text="LUKE WARM LUKE", bg="#ffd9df", fg="#FF1493")
+label4.grid(padx=58, pady=5)
+label4.config(font=("Bubblegum Sans", 28))
+label5= tk.Label(master=frame5, text="LOVELORN", bg="#ffd9df", fg="#FF1493")
+label5.grid(padx=105, pady=5)
+label5.config(font=("Bubblegum Sans", 28))
+label6= tk.Label(master=frame6, text="COLD FISH", bg="#ffd9df", fg="#FF1493")
+label6.grid(padx=105, pady=5)
+label6.config(font=("Bubblegum Sans", 28))
+
+#function to randomly select the outcome, highlight the relevant one, provide a message and disable the main play button
+def test():
+    ans = randrange(1,7)
+    if ans == 1:
+        frame1.config(bg="#FF1493")
+        label1.config(fg="#ffd9df", bg="#FF1493")
+        test_btn.config(text="Wowee! Ding dong!")
+    elif ans == 2:
+        frame2.config(bg="#FF1493")
+        label2.config(fg="#ffd9df", bg="#FF1493")
+        test_btn.config(text="Yowzers ( ͡° ͜ʖ ͡°) ")
+    elif ans == 3:
+        frame3.config(bg="#FF1493")
+        label3.config(fg="#ffd9df", bg="#FF1493")
+        test_btn.config(text="You're all right, love")
+    elif ans == 4:
+        frame4.config(bg="#FF1493")
+        label4.config(fg="#ffd9df", bg="#FF1493")
+        test_btn.config(text="Decent")
+    elif ans == 5:
+        frame5.config(bg="#FF1493")
+        label5.config(fg="#ffd9df", bg="#FF1493")
+        test_btn.config(text="Oof... embarrassing")
+    elif ans == 6:
+        frame6.config(bg="#FF1493")
+        label6.config(fg="#ffd9df", bg="#FF1493")
+        test_btn.config(text="Oh... I gotta go")
+    print(ans)
+    test_btn.config(state="disabled")
+
+#button to play the love tester
+test_btn = tk.Button(master=luvframe, width=22, height=1, text="<3", fg="#ffd9df", bg="#FF1493", borderwidth=5, command=test)
+test_btn.grid(pady=20)
+test_btn.config(font=("Bubblegum Sans", 30))
+
+#text of post press feedback message
+feedback = tk.Label(master=luvframe, text="", bg="pink", fg="#FF1493")
+feedback.grid(pady=20)
+feedback.config(font=("Choko", 20))
+
+#---------------SMARTIES IN THE JAR TAB---
+jarframe = tk.Frame(book, width=1000, height=700, bg="blue")
+jarframe.grid(sticky="EW")
+book.add(jarframe, text="Smartie Guesser")
+
+#title for the smarties tab
+jar_title = tk.Label(master=jarframe,text="Smartie Guesser",bg="blue",fg="white")
+jar_title.grid(sticky="EW")
+jar_title.config(font=("Built Titling Rg",40))
+
+#subtitle for smarties tab
+jar_intro = tk.Label(master=jarframe, text='''There is a certain number of smarties in this jar.
+Guess within 10% of the right number, and maybe something will happen!''', bg="blue", fg="white", wraplen=900)
+jar_intro.grid(sticky="EW")
+jar_intro.config(font=("Built Titling Rg", 13))
+
+#adding the image of the jar
+smarties = Image.open(r"C:\Users\XXX\Documents\codin\atom files\smarties.jpg")
+smart_size = smarties.resize((384,512), Image.ANTIALIAS)
+smart_final = ImageTk.PhotoImage(smart_size)
+jar_label = tk.Label(master=jarframe, image=smart_final,width=384, height=512, borderwidth=5, bg="#82a5ff")
+jar_label.grid(sticky="EW", padx=170)
+
+#adding the text entry box for user to guess
+guess = tk.Entry(master=jarframe, width=40, fg="blue")
+guess.grid(sticky="EW", pady=2)
+guess.config(font=("Built Titling Rg", 10))
+
+#function to evaluate the guess given against the random in range 'correct' number and return a popup window with the result
+def eval():
+    num = randrange(2000,5000)
+    if guess.get() == num:
+        g_button.config(state="disabled")
+        messagebox.showinfo("Whoa!", '''Wait, what?! You got it exactly right. These virtual smarties are on their way to you as we speak. Let's hope they're not intercepted!''')
+    elif pd.to_numeric(num)*0.9 < pd.to_numeric(guess.get()) < pd.to_numeric(num)*1.1:
+        g_button.config(state="disabled")
+        messagebox.showinfo("Ayyyy!", '''Hell yeah! \n You guessed within 10% of the exact answer! A single virtual smartie begins its journey towards you. With luck, it may reach you in several thousand years''')
+    else:
+        g_button.config(state="disabled")
+        messagebox.showinfo("Oops!", "No, sorry you didn't guess correctly :( \n Here's a consolation prize: <3")
+
+#button to submit the guess
+g_button = tk.Button(master=jarframe, width=30, height=1, text="Guess!", bg="#82a5ff", fg="blue", command = eval)
+g_button.grid(pady=2,sticky="EW")
+g_button.config(font=("Built Titling Rg", 15))
+
+#function to display a popup messagebox with a hint
+def hint():
+    messagebox.askquestion("Cheeky Hint", "The answer is somewhere between 2000 and 5000")
+
+#button to trigger the hint when clicked
+hint_b = tk.Button(master=jarframe, text="?", height=1, width=1,bg="#82a5ff", fg="blue", command= hint)
+hint_b.grid(pady=2,row=5)
+hint_b.config(font=("Built Titling Rg", 5))
+
+#------------------------FORTUNE TELLER TAB---
+frame3 = tk.Frame(book, width=1000, height=700, bg="#800000")
+frame3.grid()
+book.add(frame3, text="Fortune Teller")
+
+#title within the main frame
+title = tk.Label(frame3, text="Fortune Teller", bg="#800000",fg="red")
+title.grid(padx=135)
+title.config(font=("Acumin Pro", 50))
+
+#function that creates a 'fortune' from a series of sentence structure that take random words
+def fortune_maker():
+    rand_noun1 = random.choice(pd.read_csv(r'C:\Users\XXX\Documents\codin\atom files\nounlist.csv',usecols=['ATM'],squeeze=True))
+    rand_noun2 = random.choice(pd.read_csv(r'C:\Users\XXX\Documents\codin\atom files\nounlist.csv',usecols=['ATM'],squeeze=True))
+    form1 = "Today's {} is yesteryear's {}.".format(rand_noun1, rand_noun2)
+    abstract = ["Ability","Adoration","Advantage","Adventure","Amazement","Anger","Annoyance","Anxiety","Appetite","Apprehension","Artisty",
+    "Awareness","Awe","Beauty","Belief","Bravery","Brilliance","Brutality","Calm","Care","Chaos","Charity","Childhood","Clarity","Cleverness",
+    "Coldness","Comfort","Communication","Compassion","Confidence","Confusion","Contentment","Courage","Crime","Curiosity","Customer service",
+    "Death","Deceit","Dedication","Defeat","Delay","Delight","Despair","Determination","Dexterity","Dictatorship","Disappointment","Disbelief",
+    "Dishonesty","Disquiet","Disregard","Disturbance","Divorce","Dream","Education","Ego","Elegance","Envy","Evil","Failure","Faith","Fascination",
+    "Fear","Fiction","Fragility","Freedom","Friendship","Gain","Generation","Generosity","Goal","Goodness","Gossip","Growth","Happiness",
+    "Hate","Hatred","Hope","Horror","Hurt","Idea","Infancy","Infatuation","Inflation","Insanity","Intelligence","Irritation","Joy","Justice",
+    "Kindness","Laughter","Law","Liberty","Lie","Life","Loneliness","Loss","Love","Luck","Luxury","Maturity","Mercy","Movement","Music","Nap",
+    "Need","Opinion","Opportunity","Pain","Patience","Peace","Peculiarity","Perseverance","Pleasure","Poverty","Power","Pride","Principle",
+    "Reality","Relaxation","Relief","Religion","Restoration","Riches","Right","Rumour","Sacrifice","Sanity","Satisfaction","Self-control",
+    "Sensitivity","Service","Shock","Silliness","Skill","Sleep","Sorrow","Speed","Strength","Strictness","Success","Surprise","Talent","Thrill",
+    "Timing","Tiredness","Tolerance","Trend","Trust","Uncertainty","Unemployment","Union","Unreality","Victory","Wariness","Warmth","Weakness",
+    "Wealth","Weariness","Wisdom","Wit","Worry"]
+    form2 = "Never underestimate the {} of {}.".format(random.choice(abstract).lower() ,random.choice(abstract).lower() )
+    form3 = "{} in the hand is better than {} in the bush.".format(random.choice(abstract).capitalize(), rand_noun1.lower())
+    form4 = "Just do it! You will be rewarded with {}.".format(random.choice(abstract).lower())
+    form5 = "Get knocked down, get back up again. Then go find a(n) {}.".format(rand_noun2.lower())
+    form6 = "Perhaps you've been focusing too much on {}".format(rand_noun1.lower())
+    fort_info.config(text=random.choice([form1, form2, form3, form4, form5, form6]))
+
+#loading, resizing and displaying fortune cookie image
+cookie = Image.open(r"C:\Users\XXX\Documents\codin\atom files\fortune_cookie.jpg")
+cookie_size = cookie.resize((375,300), Image.ANTIALIAS)
+cookie_final = ImageTk.PhotoImage(cookie_size)
+cookie_label = tk.Label(master=frame3, image=cookie_final,width=375, height=300, borderwidth=5, bg="red")
+cookie_label.grid(sticky="nsew",padx=155, pady=25)
+
+#text explaining this tab. once the fortune_maker function triggers this text changes to the fortune
+fort_info = tk.Label(frame3, text="""This fortune cookie is feeling antisocial and doesn't want to be smashed.
+You can still break it for a laugh, but it will probably get mad and give you some BS fortune that won't make sense...""", bg="#800000",fg="red")
+fort_info.grid()
+fort_info.config(font=("Acumin Pro",15), wraplen=630)
+
+#button to trigger the main (fortune_maker) function
+fort_button = tk.Button(frame3,text="Attack Cookie", bg="red",fg="#800000",command= fortune_maker)
+fort_button.grid(pady=40)
+fort_button.config(font=("Acumin Pro", 23))
+
+#----------------------------BALLOON POP TAB----
+frame4 = tk.Frame(book, width=500, height=700, bg="orange")
+frame4.grid()
+book.add(frame4, text="Pop the Balloon")
+
+#header
+pop_title = tk.Label(frame4, text="Pop the Balloon", bg="orange",)
+pop_title.grid(padx=20)
+pop_title.config(font=("Cooper Black", 40))
+
+#instructions
+pop_info = tk.Label(frame4, text="Try to pop a balloon, some of them contain prizes!", bg="orange")
+pop_info.grid()
+pop_info.config(font=("Cooper Black", 15))
+
+#creating the canvas to draw the balloons onto
+canv = tk.Canvas(frame4, width=570, height=500, bg="orange", highlightbackground="black", cursor="crosshair")
+canv.grid(pady=10, padx=70)
+
+#main function triggers when the canvas is clicked, random chance to get a few different outcomes in popup message boxes
+def balloon_pop(self):
+    rand = random.randrange(100)
+    print(rand)
+    if rand <=15:
+        messagebox.showinfo( title="Winner!", message="Wahey! You popped the balloon, and a prize fell out: \n 🍾 \n A tiny 2d champagne bottle! Not bad...")
+    elif rand <=75:
+        messagebox.showinfo(title="Unlucky", message = "Aw nuts. The dart just bounced right off!")
+    else:
+        messagebox.showinfo(title="Better Luck Next Time", message="Unlucky, you hit a steel balloon and it didn't pop :(")
+        
+#drawing the balloons onto the canvas
+canv.create_oval(50,150,150,50, fill="red", outline ="red", tags="balloon")
+points=[90,170, 100,150, 110,170]
+canv.create_polygon(points, fill="red", outline ="red")
+
+canv.create_oval(170,150,270,50, fill="red", outline ="red", tags="balloon")
+points2=[210,170, 220,150, 230,170]
+canv.create_polygon(points2, fill="red", outline ="red")
+
+canv.create_oval(290,150,390,50, fill="red", outline ="red", tags="balloon")
+points3=[330,170, 340,150, 350,170]
+canv.create_polygon(points3, fill="red", outline ="red")
+
+canv.create_oval(410,150,510,50, fill="red", outline ="red", tags="balloon")
+points4=[450,170, 460,150, 470,170]
+canv.create_polygon(points4, fill="red", outline ="red")
+
+canv.create_oval(50,300,150,200, fill="red", outline ="red", tags="balloon")
+points5=[90,320, 100,300, 110,320]
+canv.create_polygon(points5, fill="red", outline ="red")
+
+canv.create_oval(170,300,270,200, fill="red", outline ="red", tags="balloon")
+points6=[210,320, 220,300, 230,320]
+canv.create_polygon(points6, fill="red", outline ="red")
+
+canv.create_oval(290,300,390,200, fill="red", outline ="red", tags="balloon")
+points7=[330,320, 340,300, 350,320]
+canv.create_polygon(points7, fill="red", outline ="red")
+
+canv.create_oval(410,300,510,200, fill="red", outline ="red", tags="balloon")
+points8=[450,320, 460,300, 470,320]
+canv.create_polygon(points8, fill="red", outline ="red")
+
+canv.create_oval(50,450,150,350, fill="red", outline ="red", tags="balloon")
+points9=[90,470, 100,450, 110,470]
+canv.create_polygon(points9, fill="red", outline ="red")
+
+canv.create_oval(170,450,270,350, fill="red", outline ="red", tags="balloon")
+points10=[210,470, 220,450, 230,470]
+canv.create_polygon(points10, fill="red", outline ="red")
+
+canv.create_oval(290,450,390,350, fill="red", outline ="red", tags="balloon")
+points11=[330,470, 340,450, 350,470]
+canv.create_polygon(points11, fill="red", outline ="red")
+
+canv.create_oval(410,450,510,350, fill="red", outline ="red", tags="balloon")
+points12=[450,470, 460,450, 470,470]
+canv.create_polygon(points12, fill="red", outline ="red")
+
+#binding the left mouse click to trigger the balloon_pop function when a balloon is clicked
+canv.tag_bind("balloon","<Button-1>", balloon_pop)
+
+#little message at the bottom
+hard = tk.Label(frame4, text = "Fancy a challenge? Make this harder by closing your eyes or blindfolding yourself!", bg="orange", wraplen=500)
+hard.grid(pady=25)
+hard.config(font=("Cooper Black", 15))
+
+#------running the mainloop so the program works when run
+arcade.mainloop()
