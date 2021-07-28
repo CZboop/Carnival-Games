@@ -1,7 +1,7 @@
 # Carnival-Games :balloon:
 Tkinter application with several carnival game and penny arcade inspired tabs
 
-Love Tester :two_hearts: - based on The Simpsons version of this classic arcade machine
+Love Tester :two_hearts: - based on The Simpsons' version of this classic arcade machine
 
 Guess How Many Smarties in the Jar :candy: - no maths required, it's semi-random and almost certainly not the real number in there
 
